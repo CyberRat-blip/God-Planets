@@ -1,0 +1,209 @@
+
+God.png
+size: 2048,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Berad
+  rotate: true
+  xy: 594, 1174
+  size: 350, 387
+  orig: 350, 387
+  offset: 0, 0
+  index: -1
+Blue_Clothes
+  rotate: false
+  xy: 2, 1171
+  size: 393, 873
+  orig: 393, 873
+  offset: 0, 0
+  index: -1
+Cheeks
+  rotate: true
+  xy: 833, 955
+  size: 217, 38
+  orig: 218, 40
+  offset: 0, 0
+  index: -1
+EYES
+  rotate: true
+  xy: 919, 538
+  size: 190, 60
+  orig: 190, 60
+  offset: 0, 0
+  index: -1
+Eyelids
+  rotate: true
+  xy: 919, 348
+  size: 188, 44
+  orig: 191, 48
+  offset: 1, 2
+  index: -1
+Glares
+  rotate: false
+  xy: 357, 3
+  size: 142, 21
+  orig: 142, 21
+  offset: 0, 0
+  index: -1
+Hair_Back
+  rotate: true
+  xy: 489, 316
+  size: 411, 428
+  orig: 411, 428
+  offset: 0, 0
+  index: -1
+Head
+  rotate: true
+  xy: 397, 1526
+  size: 518, 498
+  orig: 524, 503
+  offset: 4, 3
+  index: -1
+L_Eyebrow
+  rotate: true
+  xy: 641, 737
+  size: 74, 47
+  orig: 74, 47
+  offset: 0, 0
+  index: -1
+L_Fingers
+  rotate: true
+  xy: 867, 730
+  size: 84, 166
+  orig: 84, 166
+  offset: 0, 0
+  index: -1
+L_Forearm
+  rotate: false
+  xy: 2, 5
+  size: 175, 294
+  orig: 176, 296
+  offset: 1, 1
+  index: -1
+L_Hip
+  rotate: false
+  xy: 678, 11
+  size: 112, 303
+  orig: 112, 303
+  offset: 0, 0
+  index: -1
+L_Shin
+  rotate: false
+  xy: 461, 27
+  size: 97, 272
+  orig: 97, 272
+  offset: 0, 0
+  index: -1
+L_Shoulder
+  rotate: false
+  xy: 397, 1173
+  size: 195, 351
+  orig: 198, 354
+  offset: 2, 2
+  index: -1
+L_Sole
+  rotate: false
+  xy: 888, 820
+  size: 208, 141
+  orig: 208, 141
+  offset: 0, 0
+  index: -1
+Mouth
+  rotate: true
+  xy: 690, 739
+  size: 72, 29
+  orig: 72, 29
+  offset: 0, 0
+  index: -1
+Nimbus
+  rotate: true
+  xy: 489, 729
+  size: 442, 150
+  orig: 442, 150
+  offset: 0, 0
+  index: -1
+Pupils
+  rotate: false
+  xy: 792, 2
+  size: 166, 61
+  orig: 166, 61
+  offset: 0, 0
+  index: -1
+R_Eyebrow
+  rotate: true
+  xy: 960, 59
+  size: 120, 42
+  orig: 120, 42
+  offset: 0, 0
+  index: -1
+R_Fingers_Holds
+  rotate: false
+  xy: 873, 963
+  size: 160, 209
+  orig: 162, 211
+  offset: 1, 1
+  index: -1
+R_Fingers_Idle
+  rotate: false
+  xy: 792, 65
+  size: 162, 249
+  orig: 162, 249
+  offset: 0, 0
+  index: -1
+R_Forearm
+  rotate: false
+  xy: 179, 11
+  size: 176, 288
+  orig: 176, 288
+  offset: 0, 0
+  index: -1
+R_Hip
+  rotate: false
+  xy: 560, 6
+  size: 116, 308
+  orig: 116, 308
+  offset: 0, 0
+  index: -1
+R_Shin
+  rotate: false
+  xy: 357, 26
+  size: 102, 273
+  orig: 102, 273
+  offset: 0, 0
+  index: -1
+R_Shoulder
+  rotate: false
+  xy: 641, 813
+  size: 190, 359
+  orig: 190, 359
+  offset: 0, 0
+  index: -1
+R_Sole
+  rotate: true
+  xy: 956, 181
+  size: 165, 148
+  orig: 165, 148
+  offset: 0, 0
+  index: -1
+Smile_1
+  rotate: true
+  xy: 833, 816
+  size: 137, 53
+  orig: 144, 58
+  offset: 4, 2
+  index: -1
+Smile_2
+  rotate: false
+  xy: 721, 742
+  size: 144, 69
+  orig: 145, 71
+  offset: 0, 1
+  index: -1
+White_Clothes
+  rotate: false
+  xy: 2, 301
+  size: 485, 868
+  orig: 485, 870
+  offset: 0, 2
+  index: -1

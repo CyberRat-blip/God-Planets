@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<dependencies>
+    <androidPackages>
+        <androidPackage spec="com.appodeal.ads.sdk.networks:admob:3.2.0.0-beta.2" />
+        <repositories>
+            <repository>https://artifactory.appodeal.com/appodeal-beta-public</repository>
+        </repositories>
+    </androidPackages>
+</dependencies>
