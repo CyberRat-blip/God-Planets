@@ -1,7 +1,7 @@
 # God Game: Merge Planet 2048 🌌
 
 ## Description
-**In "God Game: Merge Planet 2048," immerse yourself in a captivating puzzle experience where you merge planets with numbers to reach 2048. This game offers a unique twist on the classic 2048 puzzle, with dynamic planetary movements and realistic physics.**
+**In "God Game: Merge Planet 2048," immerse yourself in a captivating puzzle experience where you merge planets with numbers to reach 2048. This game offers a unique twist on the classic 2048 puzzle, with dynamic planetary movements and realistic physics.** 
 
 ## Screenshots
 ![android](https://github.com/CyberRat-blip/God-Planets/blob/main/Assets/Sprite/UI/unnamed%20(1).webp)
