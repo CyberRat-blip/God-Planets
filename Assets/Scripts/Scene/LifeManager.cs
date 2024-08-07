@@ -72,7 +72,8 @@ public class LifeManager : MonoBehaviour
 
     public void AddLives(int amount)
     {
-        lifeCount = Mathf.Min(lifeCount + amount, maxLives);
+        // lifeCount = Mathf.Min(lifeCount + amount, maxLives);
+        lifeCount += amount;
         SaveLives();
     }
 

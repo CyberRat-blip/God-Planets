@@ -3,6 +3,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
+using AppodealAds.Unity.Editor.Utils;
 
 namespace AppodealAds.Unity.Editor.InternalResources
 {
@@ -12,12 +13,12 @@ namespace AppodealAds.Unity.Editor.InternalResources
         private const string AppodealSettingsExportPath = "Appodeal/Editor/InternalResources/AppodealSettings.asset";
         private static AppodealSettings instance;
 
-        [SerializeField] private string adMobAndroidAppId = string.Empty;
-        [SerializeField] private string adMobIosAppId = string.Empty;
+        [SerializeField] private string adMobAndroidAppId = AppodealUnityUtils.AdMobAppIdPlaceholder;
+        [SerializeField] private string adMobIosAppId = AppodealUnityUtils.AdMobAppIdPlaceholder;
 
         [SerializeField] private bool accessCoarseLocationPermission;
-        [SerializeField] private bool writeExternalStoragePermission;
-        [SerializeField] private bool accessWifiStatePermission;
+        [SerializeField] private bool writeExternalStoragePermission = true;
+        [SerializeField] private bool accessWifiStatePermission = true;
         [SerializeField] private bool vibratePermission;
         [SerializeField] private bool accessFineLocationPermission;
 
@@ -28,7 +29,7 @@ namespace AppodealAds.Unity.Editor.InternalResources
         [SerializeField] private bool nSCalendarsUsageDescription;
         [SerializeField] private bool nSAppTransportSecurity;
 
-        [SerializeField] private bool iOSSKAdNetworkItems;
+        [SerializeField] private bool iOSSKAdNetworkItems = true;
         [SerializeField] private List<string> iOsskAdNetworkItemsList;
 
         public static AppodealSettings Instance
@@ -36,15 +37,17 @@ namespace AppodealAds.Unity.Editor.InternalResources
             get
             {
                 if (instance != null) return instance;
+
                 var settingsFilePath = Path.Combine("Assets", AppodealSettingsExportPath);
                 var settingsDir = Path.GetDirectoryName(settingsFilePath);
                 if (!Directory.Exists(settingsDir))
                 {
                     Directory.CreateDirectory(settingsDir ?? string.Empty);
                 }
-
                 instance = AssetDatabase.LoadAssetAtPath<AppodealSettings>(settingsFilePath);
+
                 if (instance != null) return instance;
+
                 instance = CreateInstance<AppodealSettings>();
                 AssetDatabase.CreateAsset(instance, settingsFilePath);
 

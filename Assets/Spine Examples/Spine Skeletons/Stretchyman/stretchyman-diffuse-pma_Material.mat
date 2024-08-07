@@ -9,6 +9,8 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: stretchyman-diffuse-pma_Material
   m_Shader: {fileID: 4800000, guid: 2ce511398fb980f41b7d316c51534590, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - _ALPHAPREMULTIPLY_ON
   - _EMISSION
@@ -26,6 +28,7 @@ Material:
     IGNOREPROJECTOR: true
     RenderType: Transparent
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:

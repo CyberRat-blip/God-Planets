@@ -26,6 +26,7 @@ namespace AppodealAds.Unity.Editor.Utils
         public const string NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you";
 
         public const string GADApplicationIdentifierDefaultKey = "ca-app-pub-3940256099942544~1458002511";
+        public const string AdMobAppIdPlaceholder = "ca-app-pub-xxxxxxxxxxxxxxxx~yyyyyyyyyy";
 
         #region Optional Android Permissions
 
