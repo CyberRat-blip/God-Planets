@@ -1,11 +1,12 @@
+using System.Collections.Generic;
 using AppodealAds.Unity.Api;
 using AppodealAds.Unity.Common;
 using UnityEngine;
 
-public class AppodealAdsManager : MonoBehaviour, IBannerAdListener, IRewardedVideoAdListener
+public class AppodealAdsManager : MonoBehaviour, IBannerAdListener, IRewardedVideoAdListener, IAppodealInitializationListener
 {
     [SerializeField] private string appKey = "3a98a8e06267b07d511879a6cbe338351e2017ee89712279";
-    [SerializeField] private float interstitialAdInterval = 300f; // Интервал в секундах (300 секунд = 5 минут)
+    [SerializeField] private float interstitialAdInterval = 300f; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ (300 пїЅпїЅпїЅпїЅпїЅпїЅ = 5 пїЅпїЅпїЅпїЅпїЅ)
 
     private bool shouldContinueGame;
     private float interstitialTimer;
@@ -15,18 +16,23 @@ public class AppodealAdsManager : MonoBehaviour, IBannerAdListener, IRewardedVid
         InitializeAppodeal();
         ShowBanner();
         interstitialTimer = interstitialAdInterval;
+
+        if (PlayerPrefs.GetInt("noAdsPurchased", 0) == 1)
+        {
+            interstitialAdInterval = 0;
+        }
     }
 
     private void Update()
     {
-        // Обновляем таймер для интерстишл рекламы
+        // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         if (interstitialTimer > 0)
         {
             interstitialTimer -= Time.deltaTime;
             if (interstitialTimer <= 0)
             {
                 ShowInterstitialAd();
-                interstitialTimer = interstitialAdInterval; // Сброс таймера
+                interstitialTimer = interstitialAdInterval; // пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
             }
         }
     }
@@ -34,10 +40,15 @@ public class AppodealAdsManager : MonoBehaviour, IBannerAdListener, IRewardedVid
     private void InitializeAppodeal()
     {
         int adTypes = Appodeal.BANNER | Appodeal.REWARDED_VIDEO | Appodeal.INTERSTITIAL;
-        Appodeal.initialize(appKey, adTypes);
+        Appodeal.initialize(appKey, adTypes, this);
 
         Appodeal.setBannerCallbacks(this);
         Appodeal.setRewardedVideoCallbacks(this);
+    }
+
+    public void onInitializationFinished(List<string> errors)
+    {
+        throw new System.NotImplementedException();
     }
 
     private void ShowInterstitialAd()

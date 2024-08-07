@@ -3,8 +3,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Appodeal.Editor.AppodealManager.AppodealDependencies;
 using AppodealAds.Unity.Editor.InternalResources;
+using AppodealAds.Unity.Editor.Utils;
 using marijnz.EditorCoroutines;
 using UnityEditor;
 using UnityEngine;
@@ -32,7 +32,7 @@ public class AppodealInternalSettings : EditorWindow
     private static IEnumerator GetSkaNetworkIds()
     {
         SKAdNetworkIdentifiers = new List<string>();
-        var requestSkaNetworkIds = UnityWebRequest.Get("https://mw-backend.appodeal.com/v1/skadnetwork/");
+        var requestSkaNetworkIds = UnityWebRequest.Get("https://mw-backend-new.appodeal.com/v3/skadn/ids");
         yield return requestSkaNetworkIds.SendWebRequest();
         if (requestSkaNetworkIds.isError)
         {
@@ -53,16 +53,13 @@ public class AppodealInternalSettings : EditorWindow
             }
 
             var skaItems =
-                JsonHelper.FromJson<SkaNetworkItem>(JsonHelper.fixJson(requestSkaNetworkIds.downloadHandler.text));
+                JsonHelper.FromJson<string>(JsonHelper.fixJson(requestSkaNetworkIds.downloadHandler.text));
 
             foreach (var skaItem in skaItems)
             {
-                foreach (var itemID in skaItem.ids)
+                if (!string.IsNullOrEmpty(skaItem))
                 {
-                    if (!string.IsNullOrEmpty(itemID))
-                    {
-                        SKAdNetworkIdentifiers.Add(itemID);
-                    }
+                    SKAdNetworkIdentifiers.Add(skaItem);
                 }
             }
         }
@@ -244,14 +241,5 @@ public class AppodealInternalSettings : EditorWindow
         value = EditorGUILayout.Toggle(fieldTitle, value);
         EditorGUIUtility.labelWidth = originalValue;
         return value;
-    }
-
-    [Serializable]
-    public class SkaNetworkItem
-    {
-        public string name;
-        public long id;
-        public string[] ids;
-        public string compatible_version;
     }
 }

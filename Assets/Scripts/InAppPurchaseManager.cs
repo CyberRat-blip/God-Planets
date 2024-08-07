@@ -1,14 +1,15 @@
 using System;
 using UnityEngine;
 using UnityEngine.Purchasing;
+using UnityEngine.Purchasing.Extension;
 using UnityEngine.UI;
 
-public class InAppPurchaseManager : MonoBehaviour, IStoreListener
+public class InAppPurchaseManager : MonoBehaviour, IDetailedStoreListener
 {
     private static IStoreController m_StoreController;
     private static IExtensionProvider m_StoreExtensionProvider;
 
-    public Button noAdsButton; // Указатель на кнопку отключения рекламы
+    public Button noAdsButton; // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
     [Obsolete]
     void Start()
@@ -109,13 +110,15 @@ public class InAppPurchaseManager : MonoBehaviour, IStoreListener
         }
         else if (String.Equals(args.purchasedProduct.definition.id, "com.5lives", StringComparison.Ordinal))
         {
+            LifeManager.Instance.AddLives(5);
             Debug.Log("You've added 5 lives!");
-            // Логика добавления 5 жизней
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 5 пїЅпїЅпїЅпїЅпїЅпїЅ
         }
         else if (String.Equals(args.purchasedProduct.definition.id, "com.15lives", StringComparison.Ordinal))
         {
+            LifeManager.Instance.AddLives(15);
             Debug.Log("You've added 15 lives!");
-            // Логика добавления 15 жизней
+            // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ 15 пїЅпїЅпїЅпїЅпїЅпїЅ
         }
         else
         {
@@ -130,28 +133,33 @@ public class InAppPurchaseManager : MonoBehaviour, IStoreListener
         Debug.Log($"OnPurchaseFailed: FAIL. Product: '{product.definition.storeSpecificId}', PurchaseFailureReason: {failureReason}");
     }
 
-    void IStoreListener.OnInitializeFailed(InitializationFailureReason error)
+    public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription)
     {
         throw new NotImplementedException();
     }
+
+    // void IStoreListener.OnInitializeFailed(InitializationFailureReason error)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
     void IStoreListener.OnInitializeFailed(InitializationFailureReason error, string message)
     {
         throw new NotImplementedException();
     }
 
-    PurchaseProcessingResult IStoreListener.ProcessPurchase(PurchaseEventArgs purchaseEvent)
-    {
-        throw new NotImplementedException();
-    }
+    // PurchaseProcessingResult IStoreListener.ProcessPurchase(PurchaseEventArgs purchaseEvent)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
-    void IStoreListener.OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
-    {
-        throw new NotImplementedException();
-    }
+    // void IStoreListener.OnPurchaseFailed(Product product, PurchaseFailureReason failureReason)
+    // {
+    //     throw new NotImplementedException();
+    // }
 
-    void IStoreListener.OnInitialized(IStoreController controller, IExtensionProvider extensions)
-    {
-        throw new NotImplementedException();
-    }
+    // void IStoreListener.OnInitialized(IStoreController controller, IExtensionProvider extensions)
+    // {
+    //     throw new NotImplementedException();
+    // }
 }

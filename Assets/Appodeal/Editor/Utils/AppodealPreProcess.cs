@@ -139,6 +139,8 @@ namespace Appodeal.Unity.Editor.Utils
 
         private void AddAdmobAppId(string path, AndroidManifest androidManifest)
         {
+            string admobAppId = AppodealSettings.Instance.AdMobAndroidAppId;
+
             if (File.Exists(Path.Combine(Application.dataPath, "Plugins/Android/AndroidManifest.xml"))
                 && CheckContainsAppId(Path.Combine(Application.dataPath, "Plugins/Android/AndroidManifest.xml")))
             {
@@ -150,7 +152,7 @@ namespace Appodeal.Unity.Editor.Utils
                         "\nRemoving duplicate from internal Appodeal AndroidManifest.xml file.");
                     return;
                 }
-                else if (!string.IsNullOrEmpty(AppodealSettings.Instance.AdMobAndroidAppId))
+                else if (!String.IsNullOrEmpty(admobAppId))
                 {
                     Debug.LogWarning(
                         $"AdmobAppId has already been added to {Path.Combine(Application.dataPath, "Plugins/Android/AndroidManifest.xml")}" +
@@ -163,14 +165,15 @@ namespace Appodeal.Unity.Editor.Utils
                 }
             }
 
-            if (!File.Exists("Assets/Appodeal/Editor/NetworkConfigs/GoogleAdMobDependencies.xml"))
+            string depsFilePath = "Assets/Appodeal/Editor/NetworkConfigs/AppodealDependencies.xml";
+            if (!File.Exists(depsFilePath) || !CheckContainsAdmobAdapter(depsFilePath))
             {
                 if (File.Exists(path) && CheckContainsAppId(path))
                 {
                     androidManifest.RemoveAdmobAppId();
                 }
                 Debug.LogWarning(
-                    "Missing Admob config (Assets/Appodeal/Editor/NetworkConfigs/GoogleAdMobDependencies.xml). Admob App Id won't be added.");
+                    "Missing Admob config (Assets/Appodeal/Editor/NetworkConfigs/AppodealDependencies.xml). Admob App Id won't be added.");
                 return;
             }
 
@@ -182,7 +185,7 @@ namespace Appodeal.Unity.Editor.Utils
                 return;
             }
 
-            if (string.IsNullOrEmpty(AppodealSettings.Instance.AdMobAndroidAppId))
+            if (String.IsNullOrEmpty(admobAppId))
             {
                 if (CheckContainsAppId(path))
                 {
@@ -194,7 +197,7 @@ namespace Appodeal.Unity.Editor.Utils
             }
             else
             {
-                if (!AppodealSettings.Instance.AdMobAndroidAppId.StartsWith("ca-app-pub-"))
+                if (!admobAppId.StartsWith("ca-app-pub-") || admobAppId == AppodealUnityUtils.AdMobAppIdPlaceholder)
                 {
                     Debug.LogError(
                         "Incorrect value. The app may crash on startup." +
@@ -203,11 +206,11 @@ namespace Appodeal.Unity.Editor.Utils
 
                 if (CheckContainsAppId(path))
                 {
-                    androidManifest.ChangeAdmobAppId(AppodealSettings.Instance.AdMobAndroidAppId);
+                    androidManifest.ChangeAdmobAppId(admobAppId);
                 }
                 else
                 {
-                    androidManifest.AddAdmobAppId(AppodealSettings.Instance.AdMobAndroidAppId);
+                    androidManifest.AddAdmobAppId(admobAppId);
                 }
             }
         }
@@ -289,6 +292,11 @@ namespace Appodeal.Unity.Editor.Utils
                     androidManifest.RemovePermission(AppodealUnityUtils.Vibrate);
                 }
             }
+        }
+
+        private bool CheckContainsAdmobAdapter(string depsFilePath)
+        {
+            return GetContentString(depsFilePath).Contains("com.appodeal.ads.sdk.networks:admob");
         }
 
         private bool CheckContainsAppId(string manifestPath)
